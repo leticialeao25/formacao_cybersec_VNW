@@ -1,0 +1,39 @@
+# 🛡️ Desafio: Confidencialidade com XSS (Stored) — DVWA
+
+## 🎯 Objetivo
+Explorar a vulnerabilidade XSS armazenado para simular roubo de sessão, demonstrando falha na **Confidencialidade**.
+
+---
+
+## ✅ Etapas Realizadas
+
+1. **Acesso ao DVWA via navegador:**
+http://localhost:8080
+
+2. **Login com credenciais padrão:**
+- Usuário: `admin`
+- Senha: `password`
+
+3. **Segurança ajustada para "Low":**
+Menu → DVWA Security → `Low` → Submit
+
+4. **Acesso ao módulo "XSS (Stored)"**
+Menu lateral → **XSS (Stored)**
+
+5. **Execução do ataque:**
+Campos preenchidos com:
+Name: Leticia
+Message: <script>alert(document.cookie)</script>
+Resultado: O alerta exibiu:
+PHPSESSID=5nv104su2032a1e52cc746ehg0; security=low
+
+🔍 Análise
+O cookie de sessão foi exposto com sucesso.
+
+Isso mostra que o sistema não valida ou sanitiza entradas do usuário.
+
+É possível capturar dados sensíveis de qualquer visitante.
+
+🧠 Conclusão
+Esse tipo de ataque demonstra que a aplicação está vulnerável e falha na confidencialidade dos dados do usuário.
+Em sistemas reais, isso poderia ser usado para roubo de sessão ou controle de contas.
